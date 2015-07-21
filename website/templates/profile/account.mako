@@ -68,6 +68,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <form data-bind="submit: addEmail">
+                                            <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
                                             <div class="form-group">
                                               <input placeholder="Email address" data-bind="value: emailInput" class="form-control">
                                             </div>
@@ -86,21 +87,25 @@
                 <div id="changePassword" class="panel panel-default">
                     <div class="panel-heading clearfix"><h3 class="panel-title">Change Password</h3></div>
                     <div class="panel-body">
-                        <form id="changePasswordForm" role="form" action="${ web_url_for('user_account_password') }" method="post">
+                        <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+                        <form id="changePasswordForm" role="form" data-bind="submit: changePassword">
                             <div class="form-group">
-                                <label for="old_password">Old password</label>
-                                <input type="password" class="form-control" name="old_password" required>
+                                <label for="oldPassword">Old password</label>
+                                <input type="password" class="form-control" data-bind="value: oldPassword">
                             </div>
                             <div class="form-group">
-                                <label for="new_password">New password</label>
-                                <input type="password" class="form-control" name="new_password" required>
+                                <label for="newPassword">New password</label>
+                                <input type="password" class="form-control" data-bind="value: newPassword">
                             </div>
                             <div class="form-group">
-                                <label for="confirm_password">Confirm new password</label>
-                                <input type="password" class="form-control" name="confirm_password" required>
+                                <label for="confirmPassword">Confirm new password</label>
+                                <input type="password" class="form-control" data-bind="value: confirmPassword">
                             </div>
                             <button type="submit" class="btn btn-primary">Update password</button>
                         </form>
+                        <div class="help-block">
+                            <p data-bind="html: message, attr: {class: messageClass}"></p>
+                        </div>
                     </div>
                 </div>
                 <div id="exportAccount" class="panel panel-default">

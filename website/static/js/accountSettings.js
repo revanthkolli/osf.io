@@ -26,7 +26,7 @@ var UserProfile = oop.defclass({
     constructor: function () {
 
         this.id = ko.observable();
-        this.emails = ko.observableArray();
+        this.emails = ko.observableArray()  ;
 
         this.primaryEmail = ko.pureComputed(function () {
             var emails = this.emails();
@@ -344,8 +344,40 @@ var ExportAccountViewModel = oop.defclass({
     }
 });
 
+
+var ChangePasswordViewModel = oop.defclass(ChangeMessageMixin, {
+    constructor: function() {
+        this.super.constructor.call(this);
+        this.oldPassword = ko.observable('').extend({required: true});
+        this.newPassword = ko.observable('').extend({required: true});
+        this.confirmPassword = ko.observable('').extend({required: true});
+    },
+    changePassword: function () {
+        this.changeMessage('', 'text-info');
+        var oldPassword = this.oldPassword();
+        var newPassword = this.newPassword();
+        var confirmPassword = this.confirmPassword;
+        if(oldPassword && newPassword && confirmPassword){
+
+        } else {
+            var message = '';
+            if(!oldPassword) {
+                message += 'Old password cannot be empty.\n';
+            }
+            if(!newPassword){
+                message += 'New password cannot be empty.\n';
+            }
+            if(confirmPassword != newPassword) {
+                message += 'New password and confirmation password do not match.'
+            }
+            this.changeMessage(message, 'text-danger');
+        }
+    }
+});
+
 module.exports = {
     UserProfileViewModel: UserProfileViewModel,
     DeactivateAccountViewModel: DeactivateAccountViewModel,
-    ExportAccountViewModel: ExportAccountViewModel
+    ExportAccountViewModel: ExportAccountViewModel,
+    ChangePasswordViewModel: ChangePasswordViewModel
 };

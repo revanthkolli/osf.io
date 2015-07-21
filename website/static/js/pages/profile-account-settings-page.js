@@ -19,4 +19,9 @@ $(function() {
         new accountSettings.ExportAccountViewModel(),
         '#exportAccount'
     );
+
+    $osf.applyBindings(
+        new accountSettings.ChangePasswordViewModel(),
+        '#changePasswordForm'
+    );
 });
