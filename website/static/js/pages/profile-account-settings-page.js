@@ -11,8 +11,8 @@ $(function() {
     viewModel.init();
 
     $osf.applyBindings(
-        new accountSettings.DeactivateAccountViewModel(),
-        '#deactivateAccount'
+        {foo: 42},
+        '#changePassword'
     );
 
     $osf.applyBindings(
@@ -20,8 +20,8 @@ $(function() {
         '#exportAccount'
     );
 
-    $osf.applyBindings(
-        new accountSettings.ChangePasswordViewModel(),
-        '#changePasswordForm'
+     $osf.applyBindings(
+        new accountSettings.DeactivateAccountViewModel(),
+        '#deactivateAccount'
     );
 });
