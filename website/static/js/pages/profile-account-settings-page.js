@@ -24,4 +24,4 @@ $(function() {
         new accountSettings.DeactivateAccountViewModel(),
         '#deactivateAccount'
     );
-});
+})
