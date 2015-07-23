@@ -11,7 +11,7 @@ $(function() {
     viewModel.init();
 
     $osf.applyBindings(
-        {foo: 42},
+        new accountSettings.ChangePasswordViewModel(),
         '#changePassword'
     );
 
